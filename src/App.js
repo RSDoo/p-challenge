@@ -1,24 +1,22 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import LocationList from './components/plantationList';
+import SearchBar from './components/searchbar';
 
 function App() {
+  const [searchedLocation, setSearchedLocation] = useState(undefined);
+  const handleSearchChange = (value) => {
+    setSearchedLocation(value);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>Challenge</h1>
+      <SearchBar onChange={handleSearchChange} />
+      <LocationList searchedLocation={
+        searchedLocation
+      } />
+    </>
   );
 }
 
